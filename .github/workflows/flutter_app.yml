@@ -1,0 +1,17 @@
+name: flutter_app
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    name: Build Web
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter: '2.5.0'
+          channel: 'stable'
+      - run: flutter pub get
+      - run: flutter build web
